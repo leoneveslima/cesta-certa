@@ -1,0 +1,69 @@
+<div class="tools-container">
+
+  <!-- 1. CALCULADORA DE PREÇO POR LITRO -->
+  <div class="tool-card">
+    <h2>🍺 Calculadora de Preço por Litro</h2>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+      Compare embalagens para descobrir qual opção sai mais barata por litro.
+    </p>
+    
+    <div class="form-group">
+      <label>Tamanho/Volume:</label>
+      <select id="liter-preset" onchange="setVolumePreset()">
+        <option value="350">Lata (350ml)</option>
+        <option value="269">Lata Palito (269ml)</option>
+        <option value="473">Latão (473ml)</option>
+        <option value="600">Garrafa (600ml)</option>
+        <option value="1000">Litronho (1.000ml)</option>
+        <option value="2000">Garrafa 2 Litros (2.000ml)</option>
+        <option value="custom">Outro tamanho (ml)...</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="custom-volume-group" style="display: none;">
+      <label>Volume Personalizado (ml):</label>
+      <input type="number" id="liter-volume" placeholder="Ex: 350" value="350" oninput="calcularPrecoPorLitro()">
+    </div>
+
+    <div class="form-group">
+      <label>Preço Unitário (R$):</label>
+      <input type="number" id="liter-price" step="0.01" placeholder="Ex: 3.50" oninput="calcularPrecoPorLitro()">
+    </div>
+
+    <div class="result-box" id="liter-result">
+      Informe o valor da unidade para calcular.
+    </div>
+  </div>
+
+  <!-- 2. RECOMENDAÇÃO DE CHURRASCO -->
+  <div class="tool-card">
+    <h2>🥩 Calculadora de Churrasco</h2>
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+      Calcule a quantidade ideal de carnes, acompanhamentos e bebidas para o seu evento.
+    </p>
+
+    <div class="form-group">
+      <label>Total de Pessoas que Comem:</label>
+      <input type="number" id="churras-pessoas" value="4" min="1" oninput="calcularChurrasco()">
+    </div>
+
+    <div class="form-group">
+      <label>Quantas dessas Pessoas Bebem Cerveja?</label>
+      <input type="number" id="churras-bebedores" value="3" min="0" oninput="calcularChurrasco()">
+    </div>
+
+    <div class="form-group">
+      <label>Quantidade de Crianças:</label>
+      <input type="number" id="churras-criancas" value="1" min="0" oninput="calcularChurrasco()">
+    </div>
+
+    <div class="churras-results" id="churras-results-container">
+      <!-- Resultados calculados via JS -->
+    </div>
+
+    <button class="btn-add-list" onclick="adicionarChurrascoALista()">
+      ➕ Adicionar tudo à Lista de Compras
+    </button>
+  </div>
+
+</div>

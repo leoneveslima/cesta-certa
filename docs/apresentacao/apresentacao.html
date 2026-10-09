@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cesta Certa — Apresentação do produto</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --navy:#1E293B; --navy2:#0F172A; --green:#10B981; --green-d:#047857; --green-l:#D1FAE5;
+    --orange:#F59E0B; --orange-l:#FEF3C7; --text:#1E293B; --muted:#64748B; --line:#E2E8F0; --bg:#F8FAFC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#fff}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);font-size:10.2pt;line-height:1.45;
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;break-after:page;padding:20mm 16mm 16mm}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .run{position:absolute;top:8mm;left:16mm;right:16mm;display:flex;justify-content:space-between;align-items:center;
+       font-size:8pt;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2.5mm}
+  .run b{color:var(--green-d)}
+  .foot{position:absolute;bottom:7mm;left:16mm;right:16mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted)}
+  h1{font-size:21pt;line-height:1.15;color:var(--navy);margin-bottom:2mm}
+  h1 small{display:block;font-size:10pt;font-weight:600;color:var(--green-d);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5mm}
+  .rule{width:22mm;height:1.6mm;border-radius:2mm;background:var(--green);margin:2.5mm 0 6mm}
+  h2{font-size:12.5pt;color:var(--navy);margin:5mm 0 2mm}
+  p{margin-bottom:2.5mm}
+  .lead{font-size:11.5pt;color:#334155}
+
+  /* capa */
+  .cover{background:linear-gradient(160deg,#0F172A 0%,#1E293B 55%,#064E3B 130%);color:#fff;padding:0}
+  .cover .in{padding:26mm 18mm 0}
+  .cover img.logo{width:30mm;height:30mm;border-radius:7mm;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .cover h1{color:#fff;font-size:36pt;margin:9mm 0 3mm}
+  .cover .tag{font-size:15pt;color:#6EE7B7;font-weight:600;max-width:140mm}
+  .cover .sub{font-size:11pt;color:#CBD5E1;margin-top:5mm;max-width:130mm}
+  .cover .phones{position:absolute;left:0;right:0;bottom:-12mm;display:flex;justify-content:center;gap:7mm}
+  .cover .phones img{width:56mm;filter:drop-shadow(0 10px 22px rgba(0,0,0,.5))}
+  .cover .phones img:nth-child(2){margin-top:-14mm}
+  .cover .ver{position:absolute;top:14mm;right:18mm;font-size:9pt;color:#94A3B8}
+
+  /* cartões de destaque */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:5mm 0}
+  .card{border:1px solid var(--line);border-radius:3mm;padding:4mm 4.5mm;background:var(--bg)}
+  .card .ic{font-size:17pt;line-height:1}
+  .card h3{font-size:11pt;margin:1.5mm 0 1mm;color:var(--navy)}
+  .card p{font-size:9.2pt;color:#475569;margin:0}
+
+  /* colunas texto + celulares */
+  .cols{display:flex;gap:9mm;align-items:flex-start}
+  .txt{flex:1;min-width:0}
+  .phones{display:flex;gap:4mm;flex:none}
+  .phone{width:40mm;text-align:center}
+  .phone img{width:100%;display:block;filter:drop-shadow(0 4px 9px rgba(15,23,42,.28))}
+  .phone span{display:block;margin-top:2mm;font-size:7.8pt;color:var(--muted);line-height:1.25}
+  .phones.one .phone{width:48mm}
+
+  ol.steps{list-style:none;counter-reset:s;margin:3mm 0}
+  ol.steps li{counter-increment:s;position:relative;padding-left:9mm;margin-bottom:3.4mm}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:6.2mm;height:6.2mm;border-radius:50%;
+       background:var(--green);color:#04251B;font-weight:800;font-size:9pt;display:flex;align-items:center;justify-content:center}
+  ol.steps b{color:var(--navy)}
+  ul.bul{margin:2mm 0 2mm 5mm}
+  ul.bul li{margin-bottom:1.6mm}
+
+  .dica,.aviso{border-radius:2.5mm;padding:3mm 4mm;margin:3mm 0;font-size:9.4pt}
+  .dica{background:var(--green-l);border-left:1.6mm solid var(--green)}
+  .aviso{background:var(--orange-l);border-left:1.6mm solid var(--orange)}
+  .dica b:first-child,.aviso b:first-child{display:block;margin-bottom:.5mm}
+
+  table{width:100%;border-collapse:collapse;margin:3mm 0;font-size:9.2pt}
+  th{background:var(--navy);color:#fff;text-align:left;padding:2.2mm 3mm;font-weight:600}
+  td{padding:2.2mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:var(--bg)}
+  .pill{display:inline-block;padding:.4mm 2.6mm;border-radius:99px;font-weight:700;font-size:8.6pt;background:#E2E8F0;color:var(--green-d)}
+  .faixas{display:flex;gap:2.5mm;margin:3mm 0}
+  .faixas div{flex:1;border-radius:2.5mm;padding:2.6mm 2mm;text-align:center;font-size:8.6pt;color:#fff;font-weight:700}
+  .faixas small{display:block;font-weight:500;opacity:.92;font-size:7.8pt}
+  .tabs{width:100%;margin:2mm 0 3mm}
+  .tabs td{padding:2mm 3mm;font-size:9.4pt}
+  .tabs td:first-child{width:24mm;font-weight:700;color:var(--green-d);white-space:nowrap}
+
+  .faq dt{font-weight:700;color:var(--navy);margin-top:3mm}
+  .faq dd{margin:0 0 1mm;color:#475569}
+  .band{position:absolute;left:0;right:0;bottom:0;height:46mm;background:linear-gradient(160deg,#0F172A,#064E3B);color:#fff;
+        display:flex;align-items:center;gap:8mm;padding:0 16mm}
+  .band img{width:22mm;height:22mm;border-radius:5mm}
+  .band h3{font-size:17pt;color:#fff}
+  .band p{margin:1mm 0 0;color:#A7F3D0;font-size:10pt}
+</style>
+</head>
+<body>
+
+<!-- ===================== 1. CAPA ===================== -->
+<section class="page cover" id="p1">
+  <div class="ver">Guia de apresentação · versão 1.4.0 · outubro de 2026</div>
+  <div class="in">
+    <img class="logo" src="../../icon-512.png" alt="">
+    <h1>Cesta Certa</h1>
+    <div class="tag">Lista de compras inteligente: total em tempo real, preços comparados e receitas que viram lista.</div>
+    <div class="sub">Compre no supermercado com mais controle. Sem cadastro, sem anúncios e com os seus dados só no seu celular.</div>
+  </div>
+  <div class="phones">
+    <img src="../prints/01-lista-por-receita.png" alt="">
+    <img src="../prints/07-historico-e-comparacao.png" alt="">
+    <img src="../prints/05-previa-da-receita.png" alt="">
+  </div>
+</section>
+
+<!-- ===================== 2. O QUE É ===================== -->
+<section class="page" id="p2">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Visão geral</small>O que é o Cesta Certa</h1>
+  <div class="rule"></div>
+  <p class="lead">O Cesta Certa é um aplicativo para Android que ajuda você a <b>montar a lista, acompanhar o total enquanto compra e gastar só o que planejou</b>. Ele também compara os preços entre mercados e transforma o ingrediente de uma receita em item da lista com poucos toques.</p>
+
+  <div class="grid">
+    <div class="card"><div class="ic">🛒</div><h3>Lista e carrinho</h3><p>Várias listas, itens organizados por categoria e o total do carrinho aparecendo na hora, conforme você digita os preços.</p></div>
+    <div class="card"><div class="ic">💰</div><h3>Orçamento sob controle</h3><p>Defina quanto pode gastar. O percentual muda de cor (verde, amarelo, laranja, vermelho) e dá para somar saldo em conta e vale-alimentação.</p></div>
+    <div class="card"><div class="ic">🍳</div><h3>Receita vira lista</h3><p>Cole o link ou o texto de uma receita. O app lê o nome do prato e separa os ingredientes para você marcar o que falta comprar.</p></div>
+    <div class="card"><div class="ic">⚖️</div><h3>Compare mercados</h3><p>Informe onde está comprando (ex.: Guanabara, Mundial). O app avisa se um item está mais barato ou mais caro que no outro mercado.</p></div>
+    <div class="card"><div class="ic">🧮</div><h3>Ferramentas úteis</h3><p>Preço por litro para comparar embalagens e calculadora de churrasco, que já joga carnes e bebidas na sua lista.</p></div>
+    <div class="card"><div class="ic">🔒</div><h3>Simples e privado</h3><p>Não pede conta, não tem anúncios e funciona sem internet. Os dados ficam no seu celular, com backup quando você quiser.</p></div>
+  </div>
+
+  <h2>Para quem é</h2>
+  <ul class="bul">
+    <li>Quem quer chegar ao caixa <b>sem susto</b> e acompanhar o total durante a compra.</li>
+    <li>Quem usa <b>vale-alimentação</b> e precisa saber quanto sobra em cada fonte.</li>
+    <li>Quem <b>cozinha por receita</b> e cansou de digitar ingrediente por ingrediente.</li>
+    <li>Quem quer saber <b>qual mercado compensa</b> e organiza churrascos e compras do mês.</li>
+  </ul>
+  <div class="dica"><b>Em uma frase</b>Você monta a lista, vai riscando no carrinho, vê o total subir e, no fim, o app guarda a compra para comparar na próxima vez.</div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>2</span></div>
+</section>
+
+<!-- ===================== 3. CONHECENDO O APP ===================== -->
+<section class="page" id="p3">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Primeiros passos</small>Conhecendo o app</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <p>Na parte de baixo da tela ficam as <b>cinco abas</b>. É por elas que você faz tudo:</p>
+      <table class="tabs">
+        <tr><td>Lista</td><td>O que ainda falta comprar. No topo: o total, o orçamento e o mercado. O botão verde <b>+</b> adiciona itens.</td></tr>
+        <tr><td>Carrinho</td><td>O que você já pegou na prateleira. Aqui fica o botão <b>Finalizar compra</b>.</td></tr>
+        <tr><td>Histórico</td><td>Compras anteriores e a comparação entre mercados.</td></tr>
+        <tr><td>Ferram.</td><td>Receita para lista, preço por litro e calculadora de churrasco.</td></tr>
+        <tr><td>Config</td><td>Nome, mercado e orçamento da lista, tema e backup.</td></tr>
+      </table>
+      <p>No topo da tela há ainda o ícone de <b>sol/lua</b> (tema claro ou escuro) e o de <b>compartilhar</b> (envia a lista por WhatsApp ou copia o texto).</p>
+
+      <h2>Como instalar (versão de teste)</h2>
+      <ol class="steps">
+        <li>Receba o arquivo <b>.apk</b> do app (WhatsApp, e-mail ou Drive) e toque nele.</li>
+        <li>Se o Android pedir, permita <b>instalar apps desta fonte</b>.</li>
+        <li>Toque em <b>Instalar</b>. O ícone <b>Cesta Certa</b> aparece no celular.</li>
+      </ol>
+      <div class="dica"><b>Atualizações</b>Para atualizar, instale a nova versão por cima: suas listas são mantidas.</div>
+    </div>
+    <div class="phones one"><div class="phone"><img src="../prints/01-lista-por-receita.png" alt=""><span>Aba Lista: total, orçamento, mercado e itens por receita</span></div></div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>3</span></div>
+</section>
+
+<!-- ===================== 4. CRIAR LISTA ===================== -->
+<section class="page" id="p4">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 1</small>Como cadastrar uma lista</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <ol class="steps">
+        <li>Abra a aba <b>Lista</b> e toque em <b>+ Nova</b>, ao lado do nome das listas.</li>
+        <li>Digite o <b>nome</b> da lista, por exemplo <i>Compra do Mês</i> ou <i>Churrasco</i>.</li>
+        <li>Se quiser, informe o <b>mercado</b> onde vai comprar (ex.: Supermercados Guanabara). O app guarda os nomes que você já usou e sugere da próxima vez.</li>
+        <li>Se quiser, informe o <b>orçamento</b>: quanto você pode gastar. Dá para mudar depois em <b>Config</b>.</li>
+        <li>Toque em <b>Criar Lista</b>. Pronto, ela já está aberta para receber itens.</li>
+      </ol>
+      <h2>Trabalhando com várias listas</h2>
+      <ul class="bul">
+        <li>Os nomes das listas aparecem em <b>botões na linha de cima</b>. Toque em um deles para trocar de lista.</li>
+        <li>Em <b>Config</b> você renomeia, define mercado e orçamento, ou exclui a lista.</li>
+        <li>O botão vermelho <b>🗑️ Limpar lista</b> remove todos os itens, mas <b>sempre pergunta antes</b>: “Tem certeza que quer limpar toda a lista?” com as opções <b>SIM</b> e <b>NÃO</b>.</li>
+      </ul>
+      <div class="dica"><b>Dica</b>Crie uma lista para cada ocasião (compra do mês, feira, churrasco). Assim você não mistura os totais.</div>
+    </div>
+    <div class="phones one"><div class="phone"><img src="../prints/13-nova-lista.png" alt=""><span>Nova lista: nome, mercado e orçamento</span></div></div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>4</span></div>
+</section>
+
+<!-- ===================== 5. ADICIONAR ITENS ===================== -->
+<section class="page" id="p5">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 2</small>Adicionar itens e acompanhar o total</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <ol class="steps">
+        <li>Toque no botão verde <b>+</b>, no canto inferior direito.</li>
+        <li>Digite o <b>produto</b>. O app sugere nomes (os que você já comprou aparecem primeiro) e <b>escolhe a categoria sozinho</b>. Para trocar, use a <i>Troca rápida</i>.</li>
+        <li>Informe a <b>quantidade</b> e, se quiser, um <b>preço estimado</b>. Toque em <b>Adicionar à Lista</b>.</li>
+        <li>No mercado, ao pegar o produto, toque no ícone do <b>carrinho 🛒</b> do item. Ele vai para a aba <b>Carrinho</b> e o total sobe.</li>
+        <li>Digite o <b>preço da etiqueta</b> no campo <b>R$</b> do item. O total no topo atualiza na hora.</li>
+      </ol>
+      <h2>No cartão de cada item</h2>
+      <ul class="bul">
+        <li><b>− e +</b> mudam a quantidade, ou toque no número e <b>digite</b> (ex.: 24).</li>
+        <li><b>Bebidas e carnes</b> têm um campo de volume ou peso (ml, g) e mostram o preço por litro ou por kg.</li>
+        <li>O <b>✕</b> remove o item.</li>
+        <li>Em <b>Por categoria / Por receita</b> você escolhe como ver a lista. Toque no título de um bloco para <b>recolher ou abrir</b> os itens.</li>
+      </ul>
+      <div class="dica"><b>Dica</b>Use sempre o mesmo nome para o mesmo produto (ex.: “Coca-Cola”). Isso ajuda o app a comparar preços entre mercados.</div>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="../prints/12-adicionar-item.png" alt=""><span>Adicionar item</span></div>
+      <div class="phone"><img src="../prints/03-carrinho.png" alt=""><span>Carrinho com total</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>5</span></div>
+</section>
+
+<!-- ===================== 6. COMO O PREÇO É CALCULADO ===================== -->
+<section class="page" id="p6">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 3</small>Como o preço é calculado</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <p>Nem todo preço é “por unidade”. <b>8 maçãs por R$ 24</b>, por exemplo, não deve virar 8 × 24. Por isso cada item tem <b>três jeitos de calcular</b>:</p>
+      <table>
+        <tr><th>Modo</th><th>Use quando</th><th>Exemplo</th><th>Total</th></tr>
+        <tr><td><span class="pill">por unidade</span></td><td>O preço é de cada unidade</td><td>3 pacotes de arroz a R$ 5,99</td><td><b>R$ 17,97</b></td></tr>
+        <tr><td><span class="pill">valor total</span></td><td>O preço já é de tudo junto</td><td>8 maçãs por R$ 24</td><td><b>R$ 24,00</b></td></tr>
+        <tr><td><span class="pill">por kg</span></td><td>O preço é do quilo (ou litro)</td><td>Banana a R$ 7,90/kg, 900 g</td><td><b>R$ 7,11</b></td></tr>
+      </table>
+      <h2>Como trocar o modo</h2>
+      <ol class="steps">
+        <li>Digite o <b>preço</b> do item.</li>
+        <li>Na linha logo abaixo aparece um botão como <b>“por unidade ▾”</b>. <b>Toque nele</b> para alternar entre os três modos.</li>
+        <li>No modo <b>por kg</b>, informe o <b>peso</b> (em gramas) no campo que aparece ao lado da quantidade.</li>
+      </ol>
+      <div class="aviso"><b>Atenção</b>No modo “por kg”, sem o peso o total fica R$ 0,00 e o app mostra “informe o peso”.</div>
+      <p>Em <b>valor total</b> o app mostra também quanto sai cada unidade (“R$ 3,00 cada”). Mudar a quantidade não altera o total.</p>
+    </div>
+    <div class="phones one"><div class="phone"><img src="../prints/14-modos-de-preco.png" alt=""><span>Os três modos no carrinho: valor total, por kg e por unidade</span></div></div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>6</span></div>
+</section>
+
+<!-- ===================== 7. RECEITA ===================== -->
+<section class="page" id="p7">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 4</small>Como enviar uma receita</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <ol class="steps">
+        <li>Abra a aba <b>Ferram.</b> e vá ao cartão <b>Receita para Lista</b>.</li>
+        <li>Cole o <b>link</b> da receita (copie o endereço da página no navegador) <b>ou</b> o <b>texto</b> da receita. O botão <b>Colar</b> ajuda.</li>
+        <li>Toque em <b>Ler ingredientes</b>. Com link, o app busca a página (precisa de internet) e lê <b>sozinho o nome do prato e os ingredientes</b>.</li>
+        <li>Na <b>prévia</b>, confira: ajuste o <b>nome da receita</b> e <b>desmarque o que já tem em casa</b>. Sal, óleo e água já vêm desmarcados, assim como o que já está na lista.</li>
+        <li>Se quiser, marque <b>“Criar uma nova lista só para esta receita”</b>.</li>
+        <li>Toque em <b>Adicionar N itens</b>. Na aba Lista, eles aparecem juntos em um bloco com o nome da receita.</li>
+      </ol>
+      <div class="dica"><b>Receita por texto</b>Funciona com o texto completo ou só com os ingredientes. Se não houver a palavra “Ingredientes”, o app tenta achar as linhas com quantidades.</div>
+      <div class="aviso"><b>Quando o link não funciona</b>Páginas que exigem login (como o Instagram) ou sites que bloqueiam leitura não abrem por link. É só <b>copiar o texto</b> da receita (a legenda, por exemplo) e colar.</div>
+      <ul class="bul">
+        <li>Testado com sites como <b>Receitas Nestlé, TudoGostoso e Receiteria</b>.</li>
+        <li>Medidas de receita (xícara, colher) ficam anotadas no nome, como <i>Açúcar — 1 xícara</i>; a quantidade começa em 1 para você ajustar ao comprar.</li>
+      </ul>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="../prints/04-receita-por-link.png" alt=""><span>Link colado, pronto para ler</span></div>
+      <div class="phone"><img src="../prints/05-previa-da-receita.png" alt=""><span>Prévia: marque o que comprar</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>7</span></div>
+</section>
+
+<!-- ===================== 8. ORÇAMENTO ===================== -->
+<section class="page" id="p8">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 5</small>Orçamento: simples ou por fonte</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <h2 style="margin-top:0">Orçamento simples</h2>
+      <p>Informe um valor ao criar a lista ou em <b>Config → Orçamento → Definir</b>. O topo da tela mostra <b>“Limite: R$ 750,00 | 21% usado”</b> e uma barra de progresso.</p>
+
+      <h2>Orçamento por fonte (conta + vale-alimentação)</h2>
+      <ol class="steps">
+        <li>Vá em <b>Config → Orçamento → Definir</b>.</li>
+        <li>Toque em <b>+ Vale-alimentação</b> e em <b>+ Saldo em conta</b> (ou <b>+ Outra</b>) e informe o valor de cada fonte.</li>
+        <li>No vale, deixe marcado <b>“Só para alimentos”</b>.</li>
+        <li>Toque em <b>Salvar</b>. O orçamento da lista vira a soma das fontes.</li>
+      </ol>
+      <p>Durante a compra o app mostra <b>quanto já usou e quanto sobra em cada fonte</b>. Alimentos saem primeiro do vale; limpeza e higiene só saem do saldo. Se esses itens passarem do saldo, o app avisa, mesmo que ainda sobre no vale.</p>
+
+      <h2>As cores do percentual</h2>
+      <div class="faixas">
+        <div style="background:#10B981">menos de 50%<small>tranquilo</small></div>
+        <div style="background:#EAB308">50% a 74%<small>atenção</small></div>
+        <div style="background:#F59E0B">75% a 99%<small>quase no limite</small></div>
+        <div style="background:#F43F5E">100% ou mais<small>passou</small></div>
+      </div>
+      <div class="dica"><b>Importante</b>Cada cartão de vale tem suas regras. Se o seu também cobrir outros itens, use a fonte como “saldo” (sem marcar “só para alimentos”).</div>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="../prints/11-orcamento-por-fonte.png" alt=""><span>Definindo as fontes</span></div>
+      <div class="phone"><img src="../prints/01-lista-por-receita.png" alt=""><span>Quanto sobra em cada fonte</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>8</span></div>
+</section>
+
+<!-- ===================== 9. FINALIZAR E COMPARAR ===================== -->
+<section class="page" id="p9">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Passo a passo 6</small>Finalizar a compra e comparar mercados</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <ol class="steps">
+        <li><b>Informe o mercado.</b> Toque em <b>“📍 Informar o mercado”</b> no topo da tela (ou preencha ao criar a lista). Ex.: Supermercados Guanabara.</li>
+        <li><b>Compre normalmente</b> e digite os preços. Enquanto você digita, o app mostra se o item está mais barato ou mais caro que em outro mercado: <i>“▲ R$ 0,50 mais caro que no Guanabara (12/09)”</i>.</li>
+        <li>Ao terminar, abra a aba <b>Carrinho</b> e toque em <b>Finalizar compra</b>. Confirme o mercado e a data.</li>
+        <li>Escolha o que fazer com a lista: <b>remover</b> os itens comprados ou <b>manter</b> os itens (sem preços) para a próxima compra.</li>
+        <li>Toque em <b>Salvar compra</b>. Ela vai para o <b>Histórico</b>.</li>
+      </ol>
+      <h2>O que você vê no Histórico</h2>
+      <ul class="bul">
+        <li><b>Comparar mercados:</b> em qual mercado a sua lista sai mais barata, considerando só os itens que existem nos dois. Ex.: <i>“Mundial está R$ 0,60 mais caro que o Guanabara nos 6 itens em comum”</i>.</li>
+        <li><b>Compras anteriores:</b> mercado, data e total. Toque para ver os itens ou excluir.</li>
+        <li><b>Gastos do carrinho atual</b> por categoria.</li>
+      </ul>
+      <div class="dica"><b>Dica</b>A comparação fica boa a partir da <b>segunda compra</b> registrada. Quanto mais compras, mais certeira.</div>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="../prints/10-finalizar-compra.png" alt=""><span>Finalizar compra</span></div>
+      <div class="phone"><img src="../prints/07-historico-e-comparacao.png" alt=""><span>Histórico e comparação</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>9</span></div>
+</section>
+
+<!-- ===================== 10. FERRAMENTAS E EXTRAS ===================== -->
+<section class="page" id="p10">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Extras</small>Ferramentas, backup e outros recursos</h1>
+  <div class="rule"></div>
+  <div class="cols">
+    <div class="txt">
+      <h2 style="margin-top:0">Preço por litro</h2>
+      <p>Em <b>Ferram.</b>, escolha a embalagem (lata, garrafa, 2 litros ou outro volume) e informe o preço. O app mostra quanto custa o <b>litro</b>, para comparar qual compensa mais.</p>
+      <h2>Calculadora de churrasco</h2>
+      <p>Informe o total de <b>pessoas</b>, quantas <b>bebem cerveja</b> e quantas são <b>crianças</b>. O app calcula carne bovina, linguiça, frango, pão de alho, cerveja e refrigerante, com as carnes arredondadas para <b>0,5 kg ou 1 kg</b>. O botão <b>Adicionar tudo à lista atual</b> coloca tudo na sua lista.</p>
+      <h2>Backup e troca de celular</h2>
+      <ol class="steps">
+        <li>Em <b>Config → Backup → Abrir</b>, toque em <b>Copiar</b> e guarde o texto (por exemplo, mandando para você mesmo no WhatsApp).</li>
+        <li>No celular novo, abra o mesmo caminho, cole o texto e toque em <b>Restaurar</b>.</li>
+      </ol>
+      <div class="aviso"><b>Atenção</b>Restaurar <b>substitui</b> os dados atuais do aparelho. O app sempre pede confirmação.</div>
+      <h2>Outros recursos</h2>
+      <ul class="bul">
+        <li><b>Compartilhar a lista:</b> ícone no topo da tela, para copiar ou enviar por WhatsApp.</li>
+        <li><b>Tema claro ou escuro:</b> ícone de sol/lua no topo. O escuro é bom dentro do mercado.</li>
+        <li><b>Excluir lista:</b> em Config, para remover uma lista inteira.</li>
+      </ul>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="../prints/06-calculadora-de-churrasco.png" alt=""><span>Calculadora de churrasco</span></div>
+      <div class="phone"><img src="../prints/09-tema-claro.png" alt=""><span>Tema claro</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Cesta Certa · versão 1.4.0</span><span>10</span></div>
+</section>
+
+<!-- ===================== 11. DICAS E PERGUNTAS ===================== -->
+<section class="page" id="p11">
+  <div class="run"><span><b>Cesta Certa</b> · Lista de Compras</span><span>Apresentação do produto</span></div>
+  <h1><small>Ajuda</small>Dicas e perguntas frequentes</h1>
+  <div class="rule"></div>
+  <dl class="faq">
+    <dt>Preciso de internet para usar?</dt>
+    <dd>Não. Listas, carrinho, orçamento, histórico, calculadoras e backup funcionam sem internet. Só a leitura de receita <b>por link</b> usa a internet.</dd>
+    <dt>Meus dados vão para algum lugar?</dt>
+    <dd>Não. Tudo fica no seu celular. O app não pede conta e não tem anúncios. Para guardar uma cópia, use o Backup.</dd>
+    <dt>Troquei de celular. Perdi minhas listas?</dt>
+    <dd>Não, se você fizer o backup. No aparelho antigo, copie o backup; no novo, cole e restaure.</dd>
+    <dt>A comparação de preços não aparece. O que fazer?</dt>
+    <dd>Registre pelo menos <b>duas compras</b> com <b>Finalizar compra</b>, informe o <b>mercado</b> de cada uma, digite os <b>preços</b> e use <b>nomes iguais ou parecidos</b> para os produtos.</dd>
+    <dt>A receita por link não funcionou.</dt>
+    <dd>Alguns sites bloqueiam a leitura e o Instagram exige login. Copie o <b>texto</b> da receita e cole no mesmo campo.</dd>
+    <dt>O total não bate com o que eu esperava.</dt>
+    <dd>Confira o <b>modo do preço</b> do item (por unidade, valor total ou por kg). Em “por kg”, lembre de informar o peso.</dd>
+    <dt>Apaguei os itens sem querer.</dt>
+    <dd>O botão <b>Limpar lista</b> sempre pede confirmação (SIM ou NÃO). Se mesmo assim limpou a lista, restaure o seu último backup em <b>Config → Backup</b>, caso tenha feito um.</dd>
+  </dl>
+  <h2>Resumo do dia a dia</h2>
+  <ol class="steps">
+    <li>Crie a lista e informe o mercado e o orçamento.</li>
+    <li>Adicione os itens (ou envie uma receita).</li>
+    <li>No mercado, passe os itens para o carrinho e digite os preços.</li>
+    <li>Finalize a compra e consulte o Histórico para comparar.</li>
+  </ol>
+  <div class="band">
+    <img src="../../icon-512.png" alt="">
+    <div><h3>Cesta Certa</h3><p>Compre com mais controle. Dúvidas e sugestões? Fale com quem enviou o app para você.</p></div>
+  </div>
+</section>
+
+</body>
+</html>

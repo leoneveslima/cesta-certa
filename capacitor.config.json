@@ -1,0 +1,13 @@
+{
+  "appId": "com.cestacerta.lista",
+  "appName": "Cesta Certa",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

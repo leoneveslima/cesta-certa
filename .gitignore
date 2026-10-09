@@ -1,0 +1,25 @@
+# Dependências e builds
+node_modules/
+android/build/
+android/app/build/
+android/.gradle/
+android/local.properties
+android/capacitor-cordova-android-plugins/build/
+
+# Binários de release (gere com o build; não versionar)
+*.apk
+*.aab
+store/*.apk
+store/*.aab
+
+# Chaves de assinatura e segredos (NUNCA versionar)
+*.jks
+*.keystore
+keystore.properties
+
+# Ambiente local
+.claude/
+.idea/
+.vscode/
+*.log
+Thumbs.db
