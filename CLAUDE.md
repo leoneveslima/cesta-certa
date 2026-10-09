@@ -14,6 +14,9 @@ Sem backend próprio, sem sync, offline (exceto importar receita por link, que u
 Estado: pronto para Play Store (teste fechado) — passos em `PLAY-STORE.md`. Pendentes do usuário: conta Play Console, política de privacidade publicada, capturas de tela, 12 testadores por 14 dias.
 Docs completos: `docs/DOCUMENTACAO.md` (arquitetura, modelo de dados, regras, build, histórico).
 
+## Projeto irmão
+`C:\Users\<usuario>\cesta-certa-analytics` (repositório separado, Python + SQLite): pipeline de dados que lê o **backup JSON do app** (`backupJSON()`: `{app:'cesta-certa',v:1,state:{purchases:[...]}}`). **Se o formato do backup ou de `state.purchases` mudar, atualizar o parser (`pipeline.ingerir`) e o gerador sintético de lá.**
+
 ## Arquivos Chave
 - `index.html` / `dist/index.html`: telas (Lista, Carrinho, **Histórico** (ex-Stats), Ferram., Config), CSS e JS. **Edite `index.html` e espelhe em `dist/`.**
 - `sw.js` (+ `dist/sw.js`): service worker cache-first, só para navegador/PWA (no app Android é desligado pelo `index.html`); subir `CACHE` `cestacerta-vN` a cada mudança web.

@@ -33,6 +33,9 @@ O arquivo [CLAUDE.md](CLAUDE.md) é o contexto que guiou a IA (arquitetura, coma
 - **Tema** escuro/claro, paleta "Mercado Moderno" (verde `#10B981`, azul marinho `#1E293B`, laranja `#F59E0B`).
 - **Compartilhar** a lista pelo WhatsApp/área de transferência.
 
+## Projeto irmão: análise de dados
+[`cesta-certa-analytics`](https://github.com/leoneveslima/cesta-certa-analytics) (em preparação) é um pipeline de dados que lê o backup deste app e calcula comparação de mercados e índice de preços da cesta. O formato lido é o do **Config → Backup**; se ele mudar aqui, o pipeline precisa acompanhar.
+
 ## Estrutura
 | Caminho | O que é |
 |---|---|
