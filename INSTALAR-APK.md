@@ -41,8 +41,8 @@ O OneDrive corrompe o build do Gradle, então compile numa **cópia fora do OneD
 (passo a passo completo em `docs/DOCUMENTACAO.md`, seção 5, e no `README.md`):
 
 ```powershell
-robocopy "<pasta do projeto>" C:\Users\lrnli\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab
-cd C:\Users\lrnli\build-cestacerta ; npx cap sync android
+robocopy "<pasta do projeto>" C:\Users\<usuario>\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab
+cd C:\Users\<usuario>\build-cestacerta ; npx cap sync android
 cd android
 $env:JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot"
 .\gradlew.bat bundleRelease assembleRelease --no-daemon
@@ -51,4 +51,4 @@ $env:JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot"
 ```
 
 Antes de gerar: subir `versionCode`/`versionName` em `android/app/build.gradle` e o cache do `sw.js`.
-A chave de assinatura fica em `C:\Users\lrnli\keystore-cestacerta\` (fora do projeto).
+A chave de assinatura fica em `C:\Users\<usuario>\keystore-cestacerta\` (fora do projeto).

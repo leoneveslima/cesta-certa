@@ -13,7 +13,7 @@ Documentação completa e histórico: [`docs/DOCUMENTACAO.md`](docs/DOCUMENTACAO
 | `politica-de-privacidade.html` | Hospedar numa URL pública (obrigatório) |
 
 ## Chave de assinatura — GUARDE EM LUGAR SEGURO
-Pasta: `C:\Users\lrnli\keystore-cestacerta\` (`upload.jks` + `keystore.properties` com a senha).
+Pasta: `C:\Users\<usuario>\keystore-cestacerta\` (`upload.jks` + `keystore.properties` com a senha).
 Fica **fora do OneDrive de propósito**. Faça cópia em pendrive ou cofre de senhas. Ao ativar o *Play App Signing* (padrão), a Google guarda a chave definitiva e esta é só a chave de envio — se perdê-la, dá para pedir reset à Google, mas dá trabalho.
 Para gerar um novo AAB: compile na cópia fora do OneDrive (ver README/DOCUMENTACAO §5) e suba `versionCode` em `android/app/build.gradle` a cada envio.
 

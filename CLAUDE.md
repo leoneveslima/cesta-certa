@@ -23,13 +23,12 @@ Docs completos: `docs/DOCUMENTACAO.md` (arquitetura, modelo de dados, regras, bu
 - `docs/apresentacao/`: PDF de apresentação do produto (+ HTML-fonte). **Atualizar o texto/prints e regerar (`python tools/gerar-apresentacao.py`) quando uma funcionalidade mudar.**
 - `docs/portfolio/linkedin-post.md`: rascunho do post de portfólio. `.gitignore` e `LICENSE` (MIT) prontos para publicar no GitHub; o projeto declara no README que foi **construído com IA (Claude)** — manter essa transparência.
 - `docs/prints/` + `tools/`: capturas de tela com dados de exemplo e os scripts que as geram (`python tools/gerar-prints.py` → `node tools/moldura-prints.cjs`). Regerar sempre que o visual mudar.
-- Chave de assinatura FORA do projeto: `C:\Users\lrnli\keystore-cestacerta\` (nunca no OneDrive/commit).
-- Obsoletos (não usados): `calculadora_*.{css,html,js}`, `MyList.apk` (build antigo `com.mylist.compras`).
+- Chave de assinatura FORA do projeto: `C:\Users\<usuario>\keystore-cestacerta\` (nunca no OneDrive/commit).
 
 ## Comandos Úteis
 - Sync: `npx cap sync android`
 - **Build de release (use a cópia fora do OneDrive — o OneDrive quebra o Gradle):**
-  `robocopy <projeto> C:\Users\lrnli\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab` → em `build-cestacerta`: `npx cap sync android` → `cd android` → `gradlew bundleRelease assembleRelease --no-daemon` (JDK 21).
+  `robocopy <projeto> C:\Users\<usuario>\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab` → em `build-cestacerta`: `npx cap sync android` → `cd android` → `gradlew bundleRelease assembleRelease --no-daemon` (JDK 21).
   Saídas em `android\app\build\outputs\{bundle,apk}\release\` → copiar para `store/`.
 - Ícones: `node gen-icons.cjs && node gen-android-icons.cjs`
 - Conferir layout sem celular: Edge headless (`C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --headless --screenshot=… --window-size=700,892 --virtual-time-budget=3000`) abrindo uma página com `<iframe>` de 412 px (ou 360 px) que carrega `dist/index.html` + script que semeia `state` e chama `renderView()`. Usar `--user-data-dir` novo por captura, **esperar o PNG aparecer** (o Edge grava depois que o processo sai) e cortar a largura com sharp.

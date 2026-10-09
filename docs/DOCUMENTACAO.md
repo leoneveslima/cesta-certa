@@ -100,10 +100,10 @@ A chave `mylist_v2` foi mantida de propósito (compatibilidade). Campos novos s�
 
 ## 5. Android / build
 - Capacitor 8, `compileSdk/targetSdk` 36, `minSdk` 24, JDK 21.
-- `android/app/build.gradle`: `applicationId "com.cestacerta.lista"`, `versionCode`/`versionName`, assinatura de release lida de `C:\Users\lrnli\keystore-cestacerta\keystore.properties` (via `user.home`).
+- `android/app/build.gradle`: `applicationId "com.cestacerta.lista"`, `versionCode`/`versionName`, assinatura de release lida de `C:\Users\<usuario>\keystore-cestacerta\keystore.properties` (via `user.home`).
 - **Chave de assinatura** (`upload.jks` + `keystore.properties`) fica **fora do OneDrive e do projeto**. Fazer backup externo. Com o Play App Signing, a Google guarda a chave definitiva.
 - **Build de release** — compilar numa cópia fora do OneDrive (o OneDrive causa `Accessing unreadable inputs`/`AccessDenied` no Gradle):
-  1. `robocopy <projeto> C:\Users\lrnli\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab`
+  1. `robocopy <projeto> C:\Users\<usuario>\build-cestacerta /MIR /XD build .gradle .git store .claude /XF *.apk *.aab`
   2. em `build-cestacerta`: `npx cap sync android`
   3. `cd android` → `gradlew.bat bundleRelease assembleRelease --no-daemon`
   4. copiar `app-release.aab` e `app-release.apk` para `store/CestaCerta-<versão>.{aab,apk}`.
@@ -172,6 +172,7 @@ Mais recente primeiro. Formato: data · versão · mudanças.
 
 | Data | Versão | Mudanças |
 |---|---|---|
+| 09/10/2026 | (sem mudança de versão) | **Repositório GitHub** (`leoneveslima/cesta-certa`): removido o nome de usuário do Windows dos documentos (`C:\Users\<usuario>\`) e apagados os arquivos obsoletos `calculadora_*.{css,html,js}` e `MyList.apk` (build antigo `com.mylist.compras`) |
 | 08/10/2026 | (sem mudança de versão) | **Portfólio:** projeto preparado para o GitHub — `.gitignore` (exclui `node_modules`, builds, APK/AAB e chaves), `LICENSE` MIT (preencher o nome), seção "Construído com IA (Claude)" e capturas no `README.md`, caminhos pessoais removidos do README; rascunho do post do LinkedIn em `docs/portfolio/linkedin-post.md`. Nada foi publicado ainda |
 | 08/10/2026 | (sem mudança de versão) | **Documento de apresentação do produto** (PDF A4, 11 páginas) com o que o app faz e passo a passo ilustrado (cadastrar lista, adicionar itens, modos de preço, enviar receita, orçamento por fonte, finalizar compra e comparar mercados, extras, FAQ). Novos prints (adicionar item, nova lista, modos de preço) e scripts `tools/gerar-apresentacao.py` |
 | 08/10/2026 | 1.4.0 (code 9) | **Modos de preço por item:** além de "por unidade", agora **"valor total"** (ex.: 8 maçãs por R$ 24 não multiplica) e **"por kg/litro"** (preço × peso, com campo de peso em qualquer categoria), alternados por um pill na linha de resumo do item; todos os totais passam por `itemTotal()`; histórico guarda modo e total da linha; comparação entre mercados respeita o modo. **Orçamento:** percentual separado do limite por "|" e **cor por faixa** (verde < 50%, amarelo 50–74%, laranja 75–99%, vermelho ≥ 100%), também nas barras das fontes. Corrigido: peso do modo "por kg" ficava escondido no item e atrapalhava a comparação. Testes jsdom (caso das maçãs, modos, faixas de cor) |
