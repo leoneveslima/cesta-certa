@@ -23,3 +23,6 @@ keystore.properties
 .vscode/
 *.log
 Thumbs.db
+
+# Material de divulgação (só local)
+docs/portfolio/

@@ -24,7 +24,7 @@ Docs completos: `docs/DOCUMENTACAO.md` (arquitetura, modelo de dados, regras, bu
 - `android/`: projeto nativo. `MainActivity.java` aplica o padding da barra de status. `app/build.gradle`: `applicationId`, `versionCode/Name`, assinatura.
 - `store/`: AAB/APK de release, ícone 512, gráfico 1024×500, política de privacidade.
 - `docs/apresentacao/`: PDF de apresentação do produto (+ HTML-fonte). **Atualizar o texto/prints e regerar (`python tools/gerar-apresentacao.py`) quando uma funcionalidade mudar.**
-- `docs/portfolio/linkedin-post.md`: rascunho do post de portfólio. `.gitignore` e `LICENSE` (MIT) prontos para publicar no GitHub; o projeto declara no README que foi **construído com IA (Claude)** — manter essa transparência.
+- `docs/portfolio/` (**só local, no `.gitignore`; não versionar**): rascunho do post do LinkedIn. `.gitignore` e `LICENSE` (MIT) já publicados no GitHub; o projeto declara no README que foi **construído com IA (Claude)** — manter essa transparência.
 - `docs/prints/` + `tools/`: capturas de tela com dados de exemplo e os scripts que as geram (`python tools/gerar-prints.py` → `node tools/moldura-prints.cjs`). Regerar sempre que o visual mudar.
 - Chave de assinatura FORA do projeto: `C:\Users\<usuario>\keystore-cestacerta\` (nunca no OneDrive/commit).
 

@@ -45,7 +45,6 @@ O arquivo [CLAUDE.md](CLAUDE.md) é o contexto que guiou a IA (arquitetura, coma
 | `store/` | AAB/APK de release, ícone, gráfico, política de privacidade |
 | `docs/prints/` | Capturas de tela (com/sem moldura) para documentação e loja; regerar com `tools/gerar-prints.py` + `tools/moldura-prints.cjs` |
 | `docs/apresentacao/` | **Apresentação do produto em PDF** (o que faz, como cadastrar listas, enviar receita…) e o HTML-fonte; regerar com `tools/gerar-apresentacao.py` |
-| `docs/portfolio/` | Texto do post do LinkedIn sobre o projeto (construído com IA) |
 | `docs/DOCUMENTACAO.md` | Documentação completa e **histórico de versões** |
 | `PLAY-STORE.md` | Passo a passo e textos para a Play Store |
 | `CLAUDE.md` | Contexto e regras para o assistente (inclui a regra de manter a documentação atualizada) |
