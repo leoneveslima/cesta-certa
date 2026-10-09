@@ -1,56 +1,58 @@
-# Post do LinkedIn — Cesta Certa
+# Post do LinkedIn — Cesta Certa (app + pipeline de dados)
 
-> Rascunho para colar no LinkedIn. Troque os trechos entre [colchetes]. Anexe 3–4 imagens de `docs/prints/` (sugestão: `01`, `07`, `11`, `05`) ou o PDF `docs/apresentacao/Cesta-Certa-Apresentacao.pdf` como documento (carrossel).
+> Rascunho para colar no LinkedIn. Troque os trechos entre [colchetes]. Anexe 3–4 imagens (sugestão: `docs/prints/01`, `07`, `11` e uma captura do `reports/resumo.md` do repositório de analytics) ou o PDF `docs/apresentacao/Cesta-Certa-Apresentacao.pdf` como documento (carrossel).
+> Repositórios: https://github.com/leoneveslima/cesta-certa · https://github.com/leoneveslima/cesta-certa-analytics
 
-## Versão principal (≈ 1.500 caracteres)
+## Versão principal (≈ 1.800 caracteres)
 
-Construí um app Android do zero, conversando com uma IA. 🛒
+Construí um app de compras e um pipeline de dados em cima dele. Os dois com ajuda de IA. 🛒📊
 
-Chama **Cesta Certa: Lista de Compras** e nasceu de um problema meu: no mercado, eu perdia o controle do total e esquecia ingredientes de receita.
+**1) O app:** Cesta Certa, uma lista de compras para Android que nasceu de um problema meu. Ele soma o carrinho em tempo real, controla orçamento por vale-alimentação e saldo, transforma o link de uma receita em lista e compara preços entre mercados. Funciona offline, sem cadastro e sem anúncios.
 
-O que ele faz:
-✅ Total do carrinho em tempo real
-✅ Orçamento por fonte (vale-alimentação + saldo em conta)
-✅ Cole o link de uma receita e os ingredientes viram lista
-✅ Compara preços entre mercados que eu frequento
-✅ Calculadora de churrasco e preço por litro/kg
-✅ Funciona offline, sem cadastro e sem anúncios
+**2) O pipeline:** o app exporta o histórico de compras, e eu montei o Cesta Certa Analytics para transformar isso em respostas: qual mercado é mais barato para a minha cesta? Quanto os preços subiram para mim?
 
-**Como foi feito:** o código foi escrito com o Claude (Anthropic), via Claude Code. Eu fiz o papel de produto e QA: defini o que o app precisava fazer, testei no meu celular, apontei o que estava errado (botão tapando valor, receita que não agrupava...) e decidi as prioridades. A IA implementou, testou e documentou.
+O que tem lá:
+→ Camadas bronze → silver → gold
+→ Ingestão idempotente (reprocessar o mesmo backup não duplica nada)
+→ Quarentena de itens inválidos, com o motivo, em vez de descartar
+→ Casamento de produtos ("ARROZ BRANCO 5 KG" = "Arroz branco") com similaridade + aliases curados
+→ Índice de preços da cesta (base 100) e comparação de mercados só sobre itens em comum
+→ 7 testes de qualidade em SQL, com severidade (erro quebra o pipeline, alerta só avisa)
+→ 10 testes automatizados em Python
 
-Meu aprendizado:
-→ IA acelera muito a implementação, mas não substitui saber o que construir
-→ Pedidos pequenos e incrementais funcionaram melhor que um "faça tudo"
-→ Documentação virou parte da entrega (o repositório tem histórico de versões, regras e decisões)
-→ Testar no aparelho real revela o que nenhum teste automático mostra
+**Como foi feito:** com o Claude (Anthropic), via Claude Code. Eu defini o problema e as regras de negócio, testei no celular, revisei as decisões e validei os resultados. A IA implementou, testou e documentou.
 
-Stack: HTML/CSS/JS (PWA de arquivo único) + Capacitor 8 para Android, dados locais, build assinado para a Play Store.
+Um aprendizado honesto: planejei usar DuckDB e dbt, mas o dbt não roda no meu Python 3.14 e o DuckDB foi bloqueado por uma política de segurança do Windows. Em vez de contornar, usei SQLite com SQL puro e deixei a migração registrada como próximo passo. Os dados do pipeline são sintéticos.
 
-O código está aberto (licença MIT) 👇
-[link do GitHub]
+Próximo passo: ler notas fiscais (NFC-e) pelo QR Code para alimentar o pipeline com dados reais.
 
-Se você usa vale-alimentação ou monta lista de compras por receita, adoraria seu feedback. [Se quiser testar o app, me chame.]
+Código aberto (MIT) nos comentários 👇
 
-#Android #IA #ClaudeCode #DesenvolvimentoDeSoftware #Capacitor #PWA #Portfolio #ProductBuilding
+#EngenhariaDeDados #Python #SQL #Android #IA #ClaudeCode #Portfolio
+
+**Primeiro comentário:**
+App: https://github.com/leoneveslima/cesta-certa
+Pipeline de dados: https://github.com/leoneveslima/cesta-certa-analytics
 
 ---
 
-## Versão curta (≈ 600 caracteres)
+## Versão curta (≈ 700 caracteres)
 
-Criei um app de lista de compras para Android conversando com o Claude (Anthropic). 🛒
+Criei um app de lista de compras para Android e um pipeline de dados sobre ele, ambos com ajuda do Claude (Anthropic). 🛒📊
 
-Eu defini o produto, testei no celular e priorizei. A IA escreveu o código, os testes e a documentação.
+O app compara preços entre mercados e controla orçamento por vale-alimentação. O pipeline (Python + SQL, camadas bronze/silver/gold) ingere o histórico de compras, isola itens inválidos, casa produtos com nomes diferentes e calcula um índice de preços da cesta, com testes de qualidade.
 
-Ele soma o carrinho em tempo real, controla orçamento por vale-alimentação e saldo, transforma o link de uma receita em lista e compara preços entre mercados. Offline, sem cadastro, sem anúncios.
+Eu defini o problema e validei; a IA implementou e documentou. Dados sintéticos, código aberto.
 
-Código aberto: [link do GitHub]
+App e pipeline nos comentários 👇
 
-#IA #ClaudeCode #Android #Portfolio
+#EngenhariaDeDados #Python #SQL #ClaudeCode
 
 ---
 
 ## Dicas de publicação
-- **Imagem de abertura:** o print `01-lista-por-receita` ou a página 1 do PDF. Posts com imagem ou documento rendem mais.
-- **Primeiro comentário:** coloque o link do GitHub (o LinkedIn reduz o alcance de posts com link no corpo).
-- **Honestidade sobre a IA** é o diferencial do post: diga o que você decidiu e o que a IA executou.
-- Os prints usam dados de exemplo (nada da sua lista real).
+- **Imagem de abertura:** uma captura do `resumo.md` (tabelas de comparação e índice) mostra o lado de dados; um print do app (`01-lista-por-receita`) mostra o produto. O carrossel com as duas funciona bem.
+- **Links no primeiro comentário:** o LinkedIn reduz o alcance de posts com link no corpo.
+- **Transparência sobre a IA** é o diferencial: diga o que você decidiu e o que a IA executou.
+- **Não escreva "disponível na Play Store":** o app ainda não foi publicado lá.
+- Os dados e os prints usam exemplos sintéticos (nada da sua lista real).
